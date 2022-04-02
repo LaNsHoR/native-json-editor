@@ -1,6 +1,6 @@
 {
-  "name": "json-text-editor",
-  "version": "0.2.0",
+  "name": "native-json-editor",
+  "version": "0.2.1",
   "description": "Native JSON text editor with indentation and syntax highlighting on the fly.",
   "main": "index.js",
   "scripts": {},

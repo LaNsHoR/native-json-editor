@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .light {
+                background: #FFF;
+                border: 1px solid black;
+            }
+
+            .light::part(number)        { color: #ef33b0 }
+            .light::part(braces)        { color: #00b2e8 }
+            .light::part(brackets)      { color: #d26a6a }
+            .light::part(colon)         { color: #000000 }
+            .light::part(comma)         { color: #000000 }
+            .light::part(string)        { color: #7c0d29; background: rgb(224, 213, 151) }
+            .light::part(string_quotes) { color: #112ba1 }
+            .light::part(key)           { color: #1d0bbe; background: #20f5ff; }
+            .light::part(key_quotes)    { color: #ff2032 }
+            .light::part(null)          { color: #21d6ff; background: #000; }
+            .light::part(true)          { color: #66ff66; background: #000; }
+            .light::part(false)         { color: #ff6666; background: #000; }
+            .light::part(value)         { border-bottom: 1px solid #000;}
+
+            #editor2, #editor5 {
+                height: 400px
+            }
+        </style>
+    </head>
+    <body>
+        <script src='json-editor.js'></script>
+        <json-editor id='editor1' value='[1,2,"hello", [1,null,3], { "key": "value", "number": 10.40 }]'></json-editor>
+        <json-editor id='editor2' value='[true,false,"hello", [1,2,3], { "key": "value", "number": 10.40 }]' indent="5"></json-editor>
+        <json-editor id='editor3' value='This is not valid'></json-editor>
+        <json-editor id='editor4'></json-editor>
+        <json-editor id='editor5' value='["hello", [1,null,3, true, false, null ], { "key": "value", "number": 10.40 }]' class="light"></json-editor>
+        <script>
+            const editor1 = document.getElementById('editor1')
+            editor1.addEventListener('keyup', () => console.log('Editor 1 modified', editor1.value ) )
+        </script>
+    </body>
+</html>

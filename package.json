@@ -1,0 +1,28 @@
+{
+  "name": "json-text-editor",
+  "version": "0.2.0",
+  "description": "Native JSON text editor with indentation and syntax highlighting on the fly.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaNsHoR/native-json-editor"
+  },
+  "keywords": [
+    "json",
+    "editor",
+    "json-editor",
+    "custom-element",
+    "html",
+    "component",
+    "native"
+  ],
+  "author": "Ernesto Azuar <lanshor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LaNsHoR/native-json-editor/issues"
+  },
+  "homepage": "https://github.com/LaNsHoR/native-json-editor#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}

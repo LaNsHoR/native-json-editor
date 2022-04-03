@@ -1,6 +1,6 @@
 # JSON Editor
 
-An html text editor for json inputs, with auto indentation and syntax highlight, both on the fly while typing. If this doesn't sound good enough:
+A HTML text editor for json inputs, with auto indentation and syntax highlight, both on the fly while typing. If this doesn't sound good enough:
 
 - NO libraries, frameworks or transpilers required.
 - It works with vanilla HTML / JS and it doesn't have any dependency.

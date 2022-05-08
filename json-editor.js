@@ -33,13 +33,13 @@ class JSON_Editor extends HTMLElement {
                *[part=true]          { color: #c2e69f }
                *[part=false]         { color: #e69fc2 }
             </style>
-            <div contentEditable="true" tabIndex="0"></div>
+            <div id="editor" contentEditable="true" tabIndex="0"></div>
         `
 
         this.last_string_content = ''
         this.attachShadow({ mode: 'open' })
         this.shadowRoot.appendChild( template.content.cloneNode(true) )
-        this.editor = this.shadowRoot.querySelector(':scope > div')
+        this.editor = this.shadowRoot.getElementById('editor')
         this.addEventListener('keyup', _ => this.format() )
     }
 
@@ -51,11 +51,17 @@ class JSON_Editor extends HTMLElement {
 
     //===[ Caret Control ]=================================================
 
+    get_selection() {
+        if( this.shadowRoot.getSelection )
+            return this.shadowRoot.getSelection()
+        return document.getSelection()
+    }
+
     // return a "pointer" with relevant information about the caret position
     get_caret_pointer() {
-        const selection = this.shadowRoot.getSelection()
+        const selection = this.get_selection()
         if (selection.rangeCount > 0) {
-            const range = this.shadowRoot.getSelection().getRangeAt(0)
+            const range = selection.getRangeAt(0)
             const caret_range = range.cloneRange()
             caret_range.selectNodeContents(this.editor)
             caret_range.setEnd(range.endContainer, range.endOffset)

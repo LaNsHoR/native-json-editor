@@ -124,7 +124,7 @@ class JSON_Editor extends HTMLElement {
     }
 
     //===[ Formatting ]====================================================
-   
+
     // format a json object
     format_object(input, offset=0) {
         // in JS typeof null returns "object" (legacy bug), for null input we just return null
@@ -133,7 +133,7 @@ class JSON_Editor extends HTMLElement {
         let output = ''
         output += `<span part="braces">{</span><br>\n`
         output += Object.keys(input).map((key, index, list) => {
-            return `${'&nbsp;'.repeat(offset+this.indent)}<span part="key" part="key"><span part="key_quotes">\"</span>${key}<span part="key_quotes">\"</span></span><span part="colon">:</span><span part="value">${this.format_input(input[key], offset+this.indent)}</span>${index < list.length-1 ? '<span part="comma">,</span>' : ''}<br>\n`
+            return `${'&nbsp;'.repeat(offset+this.indent)}${this.format_string(key, 'key')}<span part="colon">:</span><span part="value">${this.format_input(input[key], offset+this.indent)}</span>${index < list.length-1 ? '<span part="comma">,</span>' : ''}<br>\n`
         }).join('')
         output += '&nbsp;'.repeat(offset)
         output += `<span part="braces">}</span>`
@@ -153,8 +153,15 @@ class JSON_Editor extends HTMLElement {
     }
 
     // format a json string
-    format_string(input) {
-        return `<span part="string"><span part="string_quotes">\"</span>${input}<span part="string_quotes">\"</span></span>`;
+    format_string(input, type) {
+        type = type || 'string';
+        input = input
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        return `<span part="${type}"><span part="${type}_quotes">\"</span>${input}<span part="${type}_quotes">\"</span></span>`;
     }
 
     // format a boolean

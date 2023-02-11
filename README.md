@@ -68,14 +68,20 @@ That will render:
 
 To control the editor programmatically, you can use the following getters and setters:
 
-- `string_value`: Gets/Sets the editor content as a string. Example:
+- `raw_string`: Gets/Sets the editor content as a string. Getter returns the current editor content even if it is invalid json. It includes new line characters (\n). Example:
+    ```javascript
+    // get
+    const value = editor.raw_string // returns '[\n1,\n2,\n{\n"hello":"world"\n}\n]' as a string
+    ```
+
+- `string_value`: Gets/Sets the editor content as a string. Getter returns the **LAST VALID** json string. Example:
     ```javascript
     // get
     const value = editor.string_value // returns '[ 1, 2, {"hello":"world"} ]' as a string
     // set
     editor.string_value = '{ "other": "stuff" }' // sets the content of the editor
     ```
-- `json_value`: Gets/Sets the editor content as data. Example:
+- `json_value`: Gets/Sets the editor content as data. Getter returns the **LAST VALID** json value. Example:
     ```javascript
     // get
     const value = editor.json_value // returns an array [ 1, 2, {"hello":"world"} ]
@@ -88,6 +94,12 @@ To control the editor programmatically, you can use the following getters and se
     const value = editor.value // returns '[ 1, 2, {"hello":"world"} ]' as a string
     // set
     editor.value = '{ "other": "stuff" }' // sets the content of the editor
+    ```
+
+- `is_valid()`: A method which returns true or false, depending if the current editor content is valid json or not.
+    ```javascript
+    // get
+    editor.is_valid() // returns true
     ```
 
 # Styling

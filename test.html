@@ -39,9 +39,10 @@
         <json-editor id='editor3' value='This is not valid'></json-editor>
         <json-editor id='editor4'></json-editor>
         <json-editor id='editor5' value='["hello", [1,null,3, true, false, null ], { "key": "value", "number": 10.40 }]' class="light"></json-editor>
+        <json-editor id='editor6'></json-editor>
         <script>
-            const editor1 = document.getElementById('editor1')
             editor1.addEventListener('keyup', () => console.log('Editor 1 modified', editor1.value ) )
+            editor6.value = `["<span class='html'>This is html and0 <a href='&&&'>it works</a> </span>"]`
         </script>
     </body>
 </html>
